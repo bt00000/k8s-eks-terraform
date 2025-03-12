@@ -1,10 +1,11 @@
 terraform {
+  required_version = ">= 1.3.0"
+
   required_providers {
     aws = {
         source = "hashicorp/aws"
         version = "~> 5.0"
     }
-    required_version = ">= 1.3.0"
   }
 }
 
@@ -40,7 +41,7 @@ resource "aws_eks_cluster" "eks" {
   version = "1.29"
 
   vpc_config {
-    subnet_ids = aws_subnet.private[*].subnet_ids
+    subnet_ids = aws_subnet.private[*].id
   }
 
   depends_on = [ aws_iam_role_policy_attachment.eks_role_policy ]
@@ -64,7 +65,7 @@ resource "aws_iam_role" "node_role" {
 
 resource "aws_iam_role_policy_attachment" "node_role_policy" {
   role = aws_iam_role.node_role.name
-  policy_arn = "arn:aws:iam:aws:policy/AmazonAKSWorkerNodePolicy"
+  policy_arn = "arn:aws:iam:aws:policy/AmazonEKSWorkerNodePolicy"
 }
 
 resource "aws_iam_role_policy_attachment" "cni_policy" {
