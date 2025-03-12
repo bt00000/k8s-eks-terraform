@@ -1,0 +1,16 @@
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Ignore environment variable files
+.env
+*.env
+
+# Ignore AWS CLI credentials (DO NOT SHARE THESE FILES!)
+~/.aws/credentials
+~/.aws/config
+
+
