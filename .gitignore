@@ -13,4 +13,12 @@ terraform.tfstate.backup
 ~/.aws/credentials
 ~/.aws/config
 
+# Helm cache & dependencies
+get_helm.sh
+my-app-chart/charts/
+
+# Kubernetes
+.kube/
+.helm/
+
 
